@@ -1,0 +1,274 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #004080;
+    align-items: center;
+    padding: 20px;
+    margin: 0px;
+    width: 100 px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    
+}
+
+
+.logo-flex {
+    text-align: center;
+    
+    width: fit-content;
+
+
+}
+
+.title-flex {
+    text-align: center;
+    width: fit-content;
+    margin-left: auto;
+    color: white;
+}
+
+.navigation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #003366;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navigation-item a{
+    color: white;
+    text-decoration: none;
+}
+
+.navigation-item a:hover {
+    text-decoration: underline;
+
+}
+
+.main-content {
+    background-color: #d4d4d4;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.main-content h2{
+    color: #0a519c;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-content ul{
+    list-style-position: inside;
+    list-style-type: none;
+}
+.main-content ul li::before{
+    content: "- ";
+    color: black;
+    font-weight: bold;
+}
+
+.key-features{
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+.main-content2{
+    color: #0a519c;
+    text-align: center;
+    padding-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-flex{
+    text-align: center;
+    background-color: #d4d4d4;
+    padding: 30px;
+    margin-left: 150px;
+    margin-right: 150px;
+    border-radius: 30px;
+    box-shadow: 10px 5px 5px #d4d4d4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.userpass{
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px darkgrey;
+}
+
+.loginbutton{
+    width: 70px;
+    height: 40px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0px;
+}
+.loginbutton:hover {
+    background-color: #006600;
+}
+
+.forgotpass{
+    color: #004080;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.forgotpass:hover{
+    text-decoration: underline;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.termselect{
+    background-color: lightyellow;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.coursetile{
+    background-color: #e6f2ff;
+    box-shadow: 10px 5px 5px #d4d4d4;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+.coursetile:hover{
+    background-color: #ffffff 
+}
+
+.acceptbutton{
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    width: 60px;
+    border: 0px;
+}
+.acceptbutton:hover{
+    background-color: #265e28;
+}
+
+.declinebutton{
+    background-color: #D32F2F;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    width: 60px;
+    border: 0px;
+}
+
+.declinebutton:hover{
+    background-color: #821b1b;
+}
+
+.tableHeader{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.rankGold{
+    background-color: #FFD700;
+}
+
+.rankSilver{
+    background: #C0C0C0;
+}
+
+.rankBronze{
+    background-color: #CD7F32;
+}
+
+.rankOther1{
+    background-color: #f9f9f9;
+}
+
+.rankOther2{
+    background-color: #e4e2e2;
+}
+
+.studentBorder{
+    border-radius: 50%; 
+}
+
+
+.quiztime-banner {
+    border-radius: 10px;
+}
+
+.coursequiz-details {
+    text-align: center;
+    background-color: lightblue;
+    padding: 20px;
+    margin-top: 2px;
+    margin-right: 250px;
+    margin-left: 250px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.coursequiz-details h2{
+    color: #0a519c;
+}
+
+.coursequiz-details p{
+    font-size: larger;
+}
+
+.questions {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.questions p{
+    font-size: large;
+}
+
+.question-items {
+    background-color: lightgray;
+    margin-left: 675px;
+    margin-right: 675px;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: lightblue;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+.submit-button:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+.finish-button {
+    background-color: #D32F2F;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.finish-button:hover {
+    background-color: #821b1b;
+}
+
+.footer {
+    background-color: #004080;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Enrolled {
+    color: white;
+}
