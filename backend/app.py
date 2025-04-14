@@ -1,3 +1,6 @@
+#Carl Leipoldt: 30232595
+#Aaron Kim: 30212741
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
@@ -13,11 +16,12 @@ try:
 except FileNotFoundError:
     students = []
 
-
-with open("courses.json", "r") as f:
+#change back to just courses.json
+with open("/Users/aaronkim/Downloads/assignment5/backend/courses.json", "r") as f:
     courses = json.load(f)
 
-with open("testimonials.json", "r") as f:
+#change back to just testimonials.json
+with open("/Users/aaronkim/Downloads/assignment5/backend/testimonials.json", "r") as f:
     testimonials = json.load(f)
 
 @app.route("/")
