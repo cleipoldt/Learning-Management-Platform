@@ -29,6 +29,22 @@ def home():
 def get_courses():
     return jsonify(courses)
 
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    for student in students:
+        if student["username"] == username and student["password"] == password:
+            return jsonify({
+                "message": "Login successful",
+                "student_id": student["id"]
+            }), 200
+
+    return jsonify({"message": "Invalid username or password"}), 401
+
+
 @app.route("/testimonials")
 def get_testimonials():
     return jsonify(random.sample(testimonials, 2))

@@ -17,19 +17,24 @@ const LoginForm = () => {
     setError('');
 
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
-      const users = await response.json();
-      const validUser = users.find(u => u.username === username && u.email === password);
-
-      if (validUser) {
-        login(validUser);
-        // Redirect after 2 seconds
-        setTimeout(() => {
-          navigate('/courses');
-        }, 2000);
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        localStorage.setItem('student_id', data.student_id);
+        login(data);
+        navigate('/courses');
       } else {
-        setError('Invalid username or password!');
+        setError(data.message || 'Login failed');
       }
+      
     } catch (err) {
       setError('Failed to connect to the server. Please try again later.');
     } finally {
