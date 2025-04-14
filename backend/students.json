@@ -1,26 +1,9 @@
 [
   {
     "id": 1,
-    "username": "carl",
-    "password": "12$Sodwanaenon",
-    "email": "cpleipoldt@icloud.com",
-    "enrolled_courses": [
-      {
-        "description": "Build iOS and Android apps using React Native.",
-        "duration": "10 weeks",
-        "id": 5,
-        "image": "images/course1.jpg",
-        "instructor": "Dr. Robert Taylor",
-        "name": "Mobile App Development"
-      },
-      {
-        "description": "Network security, cryptography, and ethical hacking basics.",
-        "duration": "8 weeks",
-        "id": 4,
-        "image": "images/course1.jpg",
-        "instructor": "Prof. Sarah Wilson",
-        "name": "Cybersecurity Essentials"
-      }
-    ]
+    "username": "josh",
+    "password": "12$Calgary",
+    "email": "josh@example.com",
+    "enrolled_courses": []
   }
 ]

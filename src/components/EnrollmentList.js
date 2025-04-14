@@ -6,6 +6,38 @@ const EnrollmentList = ({ enrolledCourses = [], onRemove }) => {
     return sum + weeks;
   }, 0);
 
+  const studentId = localStorage.getItem("student_id");
+
+const handleDrop = async (course) => {
+  if (!studentId) {
+    alert("You must be logged in to drop a course.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:5000/drop/${studentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(course)
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Course dropped successfully!");
+      onRemove(course.enrollmentId); 
+    } else {
+      alert(data.message || "Failed to drop the course.");
+    }
+  } catch (err) {
+    console.error("Drop error:", err);
+    alert("Something went wrong while dropping the course.");
+  }
+};
+
+
   return (
     <div style={{
       flex: 1,
@@ -47,7 +79,7 @@ const EnrollmentList = ({ enrolledCourses = [], onRemove }) => {
                 }}>
                   <span style={{ fontSize: '0.9em' }}>{course.duration}</span>
                   <button
-                    onClick={() => onRemove(course.enrollmentId)}
+                    onClick={() => handleDrop(course)}
                     style={{
                       padding: '5px 10px',
                       backgroundColor: '#dc3545',

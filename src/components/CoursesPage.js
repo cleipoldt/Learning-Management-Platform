@@ -7,16 +7,18 @@ import EnrollmentList from './EnrollmentList';
 const CoursesPage = () => {
   const studentId = localStorage.getItem("student_id")
   const[courses, setCourses] = useState([]);
-  const [enrolledCourses, setEnrolledCourses] = useState(() => {
-    
-    const saved = localStorage.getItem('enrollments');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   // Save to localStorage
   useEffect(() => {
-    localStorage.setItem('enrollments', JSON.stringify(enrolledCourses));
-  }, [enrolledCourses]);
+    if (studentId) {
+      fetch(`http://localhost:5000/student_courses/${studentId}`)
+        .then(res => res.json())
+        .then(data => setEnrolledCourses(data))
+        .catch(err => console.error("Failed to fetch enrolled courses:", err));
+    }
+  }, [studentId]);
+  
 
   useEffect(() => {
     fetch('http://localhost:5000/courses')
