@@ -60,20 +60,32 @@ function RegForm() {
     };
   
     return (
-      <div className="form-flex">
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit}>
-          Username:
-          <input type="text" id="name" name="username" placeholder="Username" className="userpass" onChange={handleChange} />
-          Password:
-          <input type="password" id="password" name="password" placeholder="Password" className="userpass" onChange={handleChange} />
-          Confirm Password:
-          <input type="password" name="confirmPassword" placeholder="Confirm Password" className="userpass" onChange={handleChange} />
-          Email:
-          <input type="text" name="email" placeholder="Email" className="userpass" onChange={handleChange} />
-          <button type="submit" className="loginbutton">Sign Up</button>
-        </form>
-        {error && <div className="form-flex">{error}</div>}
+      <div>
+        <br></br><br></br>
+        <h2 class="signUp1">Sign Up</h2>
+        <main class="form-flex">
+          <form onSubmit={handleSubmit}>
+            Username:
+            <br></br><br></br>
+            <input type="text" id="name" name="username" placeholder="Username" className="userpass" onChange={handleChange} />
+            <br></br><br></br>
+            Password:
+            <br></br><br></br>
+            <input type="password" id="password" name="password" placeholder="Password" className="userpass" onChange={handleChange} />
+            <br></br><br></br>
+            Confirm Password:
+            <br></br><br></br>
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" className="userpass" onChange={handleChange} />
+            <br></br><br></br>
+            Email:
+            <br></br><br></br>
+            <input type="text" name="email" placeholder="Email" className="userpass" onChange={handleChange} />
+            <br></br><br></br>
+            <button type="submit" className="loginbutton">Sign Up</button>
+          </form>
+        </main>
+        <br></br>
+        {error && <div class="signUpError-container">{error}</div>}
       </div>
     );
 };
