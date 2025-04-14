@@ -5,6 +5,7 @@ import CourseItem from './CourseItem';
 import EnrollmentList from './EnrollmentList';
 
 const CoursesPage = () => {
+  const studentId = localStorage.getItem("student_id")
   const[courses, setCourses] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState(() => {
     
@@ -23,12 +24,39 @@ const CoursesPage = () => {
     .then(data => setCourses(data));
   }, []);
 
-  const handleEnroll = (course) => {
-    setEnrolledCourses(prev => [...prev, { 
-      ...course,
-      enrollmentId: Date.now() // Unique ID for each enrollment
-    }]);
+  const handleEnroll = async (course) => {
+    if (!studentId) {
+      alert("You must be logged in to enroll.");
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:5000/enroll/${studentId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(course)
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert("Enrolled successfully!");
+  
+        setEnrolledCourses(prev => [...prev, { 
+          ...course,
+          enrollmentId: Date.now()
+        }]);
+      } else {
+        alert(`${data.message}`);
+      }
+    } catch (err) {
+      console.error("Enrollment error:", err);
+      alert("Failed to enroll. Please try again.");
+    }
   };
+  
 
   const handleRemove = (enrollmentId) => {
     setEnrolledCourses(prev => 

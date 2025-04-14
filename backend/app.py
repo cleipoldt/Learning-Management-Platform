@@ -6,19 +6,24 @@ import random
 app = Flask(__name__)
 CORS(app)
 
-students = []
 
+try:
+    with open("students.json", "r") as f:
+        students = json.load(f)
+except FileNotFoundError:
+    students = []
+
+# Load courses
 with open("courses.json", "r") as f:
     courses = json.load(f)
 
+# Load testimonials
 with open("testimonials.json", "r") as f:
     testimonials = json.load(f)
 
 @app.route("/")
-
 def home():
-    return "LMS Flask Backens is running!"
-
+    return "LMS Flask Backend is running!"
 
 @app.route("/courses")
 def get_courses():
@@ -28,7 +33,7 @@ def get_courses():
 def get_testimonials():
     return jsonify(random.sample(testimonials, 2))
 
-@app.route("/register", methods = ["POST"])
+@app.route("/register", methods=["POST"])
 def register():
     data = request.get_json()
     username = data.get("username")
@@ -46,13 +51,35 @@ def register():
         "email": email,
         "enrolled_courses": []
     }
+
     students.append(new_student)
+
+    with open("students.json", "w") as f:
+        json.dump(students, f, indent=2)
+
     return jsonify({
-        "messeage": "Registration is a success",
+        "message": "Registration is a success",
         "student_id": new_student["id"]
-    }), 200
+    }), 201
 
+@app.route("/enroll/<int:student_id>", methods=["POST"])
+def enroll_course(student_id):
+    data = request.get_json()
+    course_id = data.get("id")
 
+    for student in students:
+        if student["id"] == student_id:
+            if any(c["id"] == course_id for c in student["enrolled_courses"]):
+                return jsonify({"message": "Already enrolled in this course"}), 400
+            
+            student["enrolled_courses"].append(data)
+
+            with open("students.json", "w") as f:
+                json.dump(students, f, indent=2)
+
+            return jsonify({"message": "Course enroll success"}), 200
+
+    return jsonify({"message": "student not found"}), 404
 
 if __name__ == "__main__":
     app.run(debug=True)

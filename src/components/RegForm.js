@@ -40,7 +40,7 @@ function RegForm() {
       }
   
       try {
-        const res = await fetch('http://localhost:3000/register', {
+        const res = await fetch('http://localhost:5000/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
@@ -49,6 +49,7 @@ function RegForm() {
         const data = await res.json();
   
         if (res.ok) {
+          localStorage.setItem("student_id", data.student_id);
           navigate('/login');
         } else {
           setError(data.message);

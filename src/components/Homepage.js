@@ -16,12 +16,12 @@ const Homepage = () => {
     });
 
 
-  fetch('http://localhost:5000/testimonials')
-    .then(res => res.json())
-    .then(data => {
-      setRandomTestimonials(data); // already 2 random ones from backend
-    });
-}, []);
+    fetch('http://localhost:5000/testimonials')
+      .then(res => res.json())
+      .then(data => {
+        setRandomTestimonials(data); // already 2 random ones from backend
+      });
+  }, []);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
