@@ -19,7 +19,7 @@ const Homepage = () => {
     fetch('http://localhost:5000/testimonials')
       .then(res => res.json())
       .then(data => {
-        setRandomTestimonials(data); // already 2 random ones from backend
+        setRandomTestimonials(data);
       });
   }, []);
 

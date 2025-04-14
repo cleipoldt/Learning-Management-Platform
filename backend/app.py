@@ -13,11 +13,10 @@ try:
 except FileNotFoundError:
     students = []
 
-# Load courses
+
 with open("courses.json", "r") as f:
     courses = json.load(f)
 
-# Load testimonials
 with open("testimonials.json", "r") as f:
     testimonials = json.load(f)
 

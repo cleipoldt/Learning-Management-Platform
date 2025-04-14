@@ -9,7 +9,7 @@ const CoursesPage = () => {
   const[courses, setCourses] = useState([]);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
 
-  // Save to localStorage
+
   useEffect(() => {
     if (studentId) {
       fetch(`http://localhost:5000/student_courses/${studentId}`)
