@@ -60,5 +60,5 @@ Then open http://localhost:3000.
 
 This was a course assignment focused on frontend–backend integration, so it takes shortcuts a production app wouldn't:
 
-- Student accounts are stored in memory and reset when the server restarts. A real version would use a database such as PostgreSQL.
+- Student accounts are saved to a local JSON file instead of a database. A real version would use a database such as PostgreSQL
 - Passwords are stored in plain text. A real version would hash them, for example with bcrypt.
