@@ -2,7 +2,7 @@
 
 A full-stack web app for browsing courses, registering, logging in, and managing course enrollments. It has a React frontend and a Flask REST backend. Built as a two-person team project for ENSF 381 (Full-Stack Web Development) at the University of Calgary, April 2025.
 
-![Screenshot](docs/screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Features
 
