@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Learning Management Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web app for browsing courses, registering, logging in, and managing course enrollments. It has a React frontend and a Flask REST backend. Built as a two-person team project for ENSF 381 (Full-Stack Web Development) at the University of Calgary, April 2025.
 
-## Available Scripts
+![Screenshot](docs/screenshot.png)
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Course catalog**: browse courses served from the Flask API
+- **Student registration**: sign-up form that posts to the backend and rejects duplicate usernames
+- **Login and protected routes**: the courses page is only reachable when logged in, using React Context and a `ProtectedRoute` wrapper with React Router
+- **Enrollment list**: add courses to and remove them from your enrolled list
+- **Testimonials**: homepage shows random student testimonials from the API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Layer | Technology |
+| --- | --- |
+| Frontend | React, React Router, React Context, CSS Modules |
+| Backend | Python, Flask, Flask-CORS |
+| Data | JSON files (courses, testimonials) |
 
-### `npm test`
+## Architecture
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+React app (port 3000)  ──HTTP/JSON──>  Flask API (port 5000)
+  ├─ Homepage                            ├─ GET  /courses
+  ├─ LoginPage / SignupPage              ├─ GET  /testimonials
+  └─ CoursesPage (protected)             └─ POST /register
+```
 
-### `npm run build`
+## My contributions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Set up the project and built most of the initial app: the Flask backend (`/courses`, `/testimonials`, `/register` routes) and the React frontend structure
+- Implemented authentication state with React Context and the protected-route wrapper that gates the courses page
+- Built the courses and enrollment pages and wired them to the REST API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+My teammate refined the registration form and backend registration logic.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running it locally
 
-### `npm run eject`
+**Backend**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+cd backend
+pip install flask flask-cors
+python app.py
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Frontend** (in a second terminal, from the project root)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm install
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then open http://localhost:3000.
 
-## Learn More
+## Known limitations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This was a course assignment focused on frontend–backend integration, so it takes shortcuts a production app wouldn't:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Student accounts are stored in memory and reset when the server restarts. A real version would use a database such as PostgreSQL.
+- Passwords are stored in plain text. A real version would hash them, for example with bcrypt.
